@@ -17,20 +17,16 @@ inherit autotools bash-completion pkgconfig
 # Miraclecast requires systemd
 REQUIRED_DISTRO_FEATURES = "systemd"
 
-SRC_URI = "git://github.com/albfan/miraclecast.git;protocol=https"
-SRCREV = "fe9a39bee8b5fc05cca48b50a98426942826f5cb"
+SRC_URI = "git://gitee.com/weidongshan/aml_miraclecast.git;protocol=https"
+SRCREV = "68a0a7db9f1523510cdbb18330c858d60e042e7e"
 
 S = "${WORKDIR}/git"
 
 do_install_append() {
     install -Dm 0644 ${S}/res/org.freedesktop.miracle.conf ${D}${sysconfdir}/dbus-1/system.d/org.freedesktop.miracle.conf
-    install -Dm 0755 ${S}/res/kill-wpa.sh ${D}${bindir}/kill-wpa.sh
-    install -Dm 0755 ${S}/res/miracle-utils.sh ${D}${bindir}/miracle-utils.sh
-    install -Dm 0755 ${S}/res/normal-wifi.sh ${D}${bindir}/normal-wifi.sh
-    install -Dm 0755 ${S}/res/show_wpa.sh ${D}${bindir}/show_wpa.sh
-    install -Dm 0755 ${S}/res/test-hardware-capabilities.sh ${D}${bindir}/test-hardware-capabilities.sh
-    install -Dm 0755 ${S}/res/test-viewer.sh ${D}${bindir}/test-viewer.sh
-    install -Dm 0755 ${S}/res/write-udev-rule.sh ${D}${bindir}/write-udev-rule.sh
+    install -Dm 0755 ${S}/res/miracle-gst.sh ${D}${bindir}/miracle-gst.sh
+    install -Dm 0755 ${S}/res/auto_link.sh ${D}${bindir}/auto_link.sh
+    install -Dm 0755 ${S}/res/exit_miracast.sh ${D}${bindir}/exit_miracast.sh
 }
 
 PACKAGES =+ "${PN}-resources"
